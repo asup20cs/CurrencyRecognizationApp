@@ -4,17 +4,17 @@ from camera import start_camera_capture
 from convert import convert_currency
 from PIL import ImageTk, Image
 from tkinter import filedialog
+from predict import predict_image
 global image_path
 
+# Function to predict currency
+def predict_currency(image_path):
+    predicted_currency = predict_image(image_path)
+    var_country.set("India")
+    var_denomination.set(predicted_currency)
+    return predicted_currency
 # Function to handle browse image button click
 def browse_image(image_label):
-    """
-    Opens a file dialog for image selection and displays the chosen image in the provided label.
-
-    Args:
-        image_label (tkinter.Label): The label where the selected image will be displayed.
-    """
-
     try:
         # Open a file dialog for image selection
         image_path = filedialog.askopenfilename(
@@ -38,7 +38,9 @@ def browse_image(image_label):
             # Update the label with the new image
             image_label.config(image=tk_image)
             image_label.image = tk_image  # Keep a reference
-
+            returned=predict_currency(image_path)
+            convert(returned)
+            
     except (OSError, FileNotFoundError) as e:
         print(f"Error: {e}")  # More specific error handling if needed
 
@@ -53,7 +55,7 @@ def start_camera():
   # Get the captured image path (assuming it's saved in the same directory)
   image_path = "captured_image.jpg"  # Replace with actual filename logic
   var_image_path.set(image_path)
-
+  convert(predict_currency(image_path))
 
 # Main application window
 root = tk.Tk()
@@ -132,8 +134,8 @@ cny_data = tk.Entry(component_frame, textvariable=var_cny, state="disabled")
 cny_data.grid(row=8, column=1, padx=5, pady=5, sticky="EW")
 
 #function to convert currency
-def convert():
-  amount = 100
+def convert(returned):
+  amount = returned
   from_currency = "INR"
   to_currency = ['USD', 'EUR', 'GBP', 'JPY', 'CNY']
   converted_amount = []
