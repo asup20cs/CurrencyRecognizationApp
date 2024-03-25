@@ -1,64 +1,27 @@
-import numpy as np
 from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import load_img, img_to_array
+from PIL import Image
+import numpy as np
 
-# Load the pre-trained model
-model = load_model('updated_indian.h5')
+# Load the model
+model_path = "updatedmodel.h5"
+model = load_model(model_path)
 
-# Define a function to load, preprocess, and predict for an image
-def predict_image(image_path, target_size=(64, 64)):
-  """
-  Loads an image, preprocesses it, and predicts the class using the model.
+# Replace with your image path and labels
+def predict_image(image_path):
+    labels = ["10", "100", "20", "200", "2000", "50", "500"]
 
-  Args:
-      image_path (str): Path to the image file.
-      target_size (tuple, optional): Target size for resizing the image. Defaults to (64, 64).
+# Preprocess the image
+    img = Image.open(image_path)
+    img = img.resize((240, 240))  # Adjust size based on your model
+    x = np.array(img)
+    x = x / 255.0
+    x = np.expand_dims(x, axis=0)
 
-  Returns:
-      str: Predicted currency name or "Unknown" if prediction confidence is low.
-  """
-  # Load the image
-  try:
-    img = load_img(image_path, target_size=target_size)
-  except FileNotFoundError:
-    print(f"Error: Image file not found at {image_path}")
-    return "Unknown"
+# Make prediction
+    prediction = model.predict(x)
 
-  # Preprocess the image
-  img_array = img_to_array(img)
-  img_array = np.expand_dims(img_array, axis=0)
-
-  # Make prediction using the model
-  predictions = model.predict(img_array)
-  predicted_class = np.argmax(predictions)
-
-  # Confidence threshold (adjust based on your model's performance)
-  confidence_threshold = 0.8
-
-  # Check prediction confidence before assigning currency
-  if predictions[0][predicted_class] >= confidence_threshold:
-    predicted_currency = currency_map.get(predicted_class)
-  else:
-    predicted_currency = "Unknown"
-
-  return predicted_currency
-
-# Indian currency map (modify class indices based on your model's output)
-currency_map = {
-    0: "10 Rupees",
-    1: "100 Rupees",
-    2: "20 Rupees",
-    3: "200 Rupees",
-    4: "2000 Rupees",
-    5: "50 Rupees",
-    6: "500 Rupees"
-}
-
-# Get the image path (replace with your actual path)
-image_path = '/content/100.jpeg'
-
-# Predict the currency for the image
-predicted_currency = predict_image(image_path)
-
-# Print the predicted currency
-print(f"Predicted Currency: {predicted_currency}")
+# Interpret the prediction
+    predicted_class_index = np.argmax(prediction[0])
+    predicted_currency = labels[predicted_class_index]
+    print(f"Predicted Currency: {predicted_currency}")
+    return predicted_currency

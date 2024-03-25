@@ -1,7 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog
 from camera import start_camera_capture
-from api import convert_currency
+from convert import convert_currency
+from PIL import ImageTk, Image
+
 
 # Function to handle browse image button click
 def browse_image():
@@ -13,8 +15,6 @@ def browse_image():
     image = tk.PhotoImage(file=image_path)  # Assuming PIL for image loading
     image_label.configure(image=image)
     image_label.image = image  # Keep a reference (optional)
-    
-    
 
 # Function to handle start camera button click (placeholder for future implementation)
 def start_camera():
@@ -23,6 +23,7 @@ def start_camera():
   # Get the captured image path (assuming it's saved in the same directory)
   image_path = "captured_image.jpg"  # Replace with actual filename logic
   var_image_path.set(image_path)
+
 
 # Main application window
 root = tk.Tk()

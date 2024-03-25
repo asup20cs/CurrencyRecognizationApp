@@ -31,6 +31,8 @@ def capture_image(filename="captured_image.jpg"):
     key = cv2.waitKey(1) & 0xFF
     if key == ord('c'):  # Capture on 'c' key press (replace with desired key)
       if image is not None:
+        converted_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
+        converted_image = cv2.cvtColor(converted_image, cv2.COLOR_RGB2P8)
         image.save(filename)
         print(f"Image captured and saved as: {filename}")
       break
