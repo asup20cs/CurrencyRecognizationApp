@@ -6,15 +6,48 @@ from PIL import ImageTk, Image
 
 
 # Function to handle browse image button click
-def browse_image():
-  global image_path
-  image_path = filedialog.askopenfilename(title="Select an Image", filetypes=[("Image Files", "*.jpg;*.png")])
-  if image_path:
-    var_image_path.set(image_path)
-    # Load image for display (replace with your image loading logic)
-    image = tk.PhotoImage(file=image_path)  # Assuming PIL for image loading
-    image_label.configure(image=image)
-    image_label.image = image  # Keep a reference (optional)
+from tkinter import Tk, Button, filedialog
+from PIL import Image, ImageTk
+global image_path
+
+def browse_image(image_label):
+    """
+    Opens a file dialog for image selection and displays the chosen image in the provided label.
+
+    Args:
+        image_label (tkinter.Label): The label where the selected image will be displayed.
+    """
+
+    try:
+        # Open a file dialog for image selection
+        image_path = filedialog.askopenfilename(
+            initialdir="/",  # Adjust initial directory if needed
+            title="Select Image",
+            filetypes=[("Image Files", "*.jpg *.jpeg *.png *.gif")]  # Filter for image formats
+        )
+
+        # Check if a file was selected
+        if image_path:
+            # Load the image using PIL
+            image = Image.open(image_path)
+            image = image.resize((432, 512))
+
+            # Convert to a Tkinter-compatible format (optional, but recommended)
+            image = image.convert("P")  # Convert to indexed palette (PNG format)
+
+            # Create a Tkinter-compatible image object
+            tk_image = ImageTk.PhotoImage(image)
+
+            # Update the label with the new image
+            image_label.config(image=tk_image)
+            image_label.image = tk_image  # Keep a reference
+
+    except (OSError, FileNotFoundError) as e:
+        print(f"Error: {e}")  # More specific error handling if needed
+
+    except (Image.DecompressionBombError, Image.UnidentifiedImageError):
+        print("Error: Invalid image format or corrupted file.")
+
 
 # Function to handle start camera button click (placeholder for future implementation)
 def start_camera():
@@ -46,7 +79,7 @@ image_frame.pack(side="right", fill="both", expand=True)
 button_frame = tk.Frame(component_frame)  # Create a sub-frame for buttons
 button_frame.grid(row=0, column=0, columnspan=2, sticky="EW")  # Place in grid
 
-browse_button = tk.Button(button_frame, text="Browse Image", command=browse_image)
+browse_button = tk.Button(button_frame, text="Browse Image", command=lambda: browse_image(image_label))
 browse_button.pack(side="left", padx=5, pady=5)  # Pack within sub-frame
 
 start_camera_button = tk.Button(button_frame, text="Start Camera", command=start_camera)
