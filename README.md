@@ -39,4 +39,5 @@ Then run the gui.py in the main folder
 ## License
 
 [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
+
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
