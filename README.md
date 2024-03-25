@@ -31,7 +31,9 @@ Then run the gui.py in the main folder
 
 ## Authors
 
-- [@asup20cs](https://github.com/asup20cs)
+- [@Ashutosh Khanal Upadhyay](https://github.com/asup20cs)
+- [@Omprakash Rana]
+- [@Nitesh Shah](https://github.com/NiteshShah1999)
 
 
 ## License
