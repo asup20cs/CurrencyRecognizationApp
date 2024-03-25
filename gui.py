@@ -55,6 +55,16 @@ def start_camera():
   # Get the captured image path (assuming it's saved in the same directory)
   image_path = "captured_image.jpg"  # Replace with actual filename logic
   var_image_path.set(image_path)
+  image = Image.open(image_path)
+  image = image.resize((432, 512))
+  image = image.convert("P")  # Convert to indexed palette (PNG format)
+
+            # Create a Tkinter-compatible image object
+  tk_image = ImageTk.PhotoImage(image)
+
+            # Update the label with the new image
+  image_label.config(image=tk_image)
+  image_label.image = tk_image  # Keep a reference
   convert(predict_currency(image_path))
 
 # Main application window
