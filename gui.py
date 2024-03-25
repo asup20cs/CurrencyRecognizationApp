@@ -3,13 +3,10 @@ from tkinter import filedialog
 from camera import start_camera_capture
 from convert import convert_currency
 from PIL import ImageTk, Image
-
-
-# Function to handle browse image button click
-from tkinter import Tk, Button, filedialog
-from PIL import Image, ImageTk
+from tkinter import filedialog
 global image_path
 
+# Function to handle browse image button click
 def browse_image(image_label):
     """
     Opens a file dialog for image selection and displays the chosen image in the provided label.
