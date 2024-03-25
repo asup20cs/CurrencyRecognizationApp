@@ -2,6 +2,7 @@ import cv2
 import time
 from PIL import Image  # For image conversion (optional)
 import tkinter as tk  # For displaying camera feed
+import numpy as np
 
 # Function to capture image and display real-time feed
 def capture_image(filename="captured_image.jpg"):
@@ -22,7 +23,8 @@ def capture_image(filename="captured_image.jpg"):
     # Optionally convert to RGB (if needed for your model)
     if frame is not None:
       rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
-      image = Image.fromarray(rgb_frame)  # Create PIL Image object (optional)
+      image = Image.fromarray(rgb_frame) # Create PIL Image object (optional)
+      
 
     # Display camera feed in the window
     cv2.imshow(window_name, frame)
@@ -31,8 +33,6 @@ def capture_image(filename="captured_image.jpg"):
     key = cv2.waitKey(1) & 0xFF
     if key == ord('c'):  # Capture on 'c' key press (replace with desired key)
       if image is not None:
-        converted_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB
-        converted_image = cv2.cvtColor(converted_image, cv2.COLOR_RGB2P8)
         image.save(filename)
         print(f"Image captured and saved as: {filename}")
       break
