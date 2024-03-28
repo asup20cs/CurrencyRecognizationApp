@@ -3,7 +3,7 @@ from PIL import Image
 import numpy as np
 
 # Load the model
-model_path = "models/updatedmodel.h5"
+model_path = "models/indian.h5"
 model = load_model(model_path)
 
 # Replace with your image path and labels
