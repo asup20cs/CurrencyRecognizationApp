@@ -1,6 +1,6 @@
+wheel==0.43.0
 numpy==1.26.4
 opencv_python==4.5.5.64
 Pillow==10.2.0
 tensorflow==2.16.0rc0
-tensorflow_intel==2.16.0rc0
 CurrencyConverter==0.17.19
