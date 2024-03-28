@@ -10,6 +10,11 @@ It is Work In Progress but can still be used
 
 ## Installation
 
+##TKinter must be installed on your system. Install using the following command
+```bash
+  sudo apt-get install python3-tk
+```
+
 Install the requirements using pip.
 
 ```bash
