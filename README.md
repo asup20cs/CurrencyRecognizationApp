@@ -10,7 +10,7 @@ It is Work In Progress but can still be used
 
 ## Installation
 
-##TKinter must be installed on your system. Install using the following command
+## TKinter must be installed on your system. Install using the following command
 ```bash
   sudo apt-get install python3-tk
 ```
@@ -33,6 +33,8 @@ Then run the gui.py in the main folder
 - Adding the training code
 - Docker image
 
+## Dataset Used
+- [@Indian Currency Note images dataset 2020](https://www.kaggle.com/datasets/vishalmane109/indian-currency-note-images-dataset-2020)
 
 ## Authors
 
