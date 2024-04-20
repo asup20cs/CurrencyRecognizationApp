@@ -7,7 +7,6 @@ from tkinter import filedialog
 #from predict import predict_image
 from predict import predict_indian, predict_nepali
 global image_path
-
 def get_country():
     return country.get()
 
@@ -105,7 +104,6 @@ button_frame.grid(row=1, column=0, padx=10, pady=10, sticky=tk.W+tk.E,columnspan
 
 country=tk.StringVar()
 def set_Country(selection):
-   global country
    country.set(selection)
 option_frame=tk.Frame(component_frame)
 option_frame.grid(row=0, column=0, padx=10, pady=10,sticky=tk.W+tk.E)
@@ -174,11 +172,13 @@ cny_data.grid(row=9, column=1, padx=5, pady=5, sticky="EW")
 #function to convert currency
 def convert(returned):
   amount = returned
-
-  if country == "India":
+  print(country.get())
+  if country.get() == "India":
     from_currency = 'INR'
+  elif country.get() == "Nepal":
+    from_currency = 'NPR'
   else:
-    from_currency = 'NRS'
+     from_currency = None
   to_currency = ['USD', 'EUR', 'GBP', 'JPY', 'CNY']
   converted_amount = []
   for currency in to_currency:
