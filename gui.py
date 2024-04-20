@@ -178,7 +178,7 @@ def convert(returned):
   if country == "India":
     from_currency = 'INR'
   else:
-    from_currency = 'NPR'
+    from_currency = 'NRS'
   to_currency = ['USD', 'EUR', 'GBP', 'JPY', 'CNY']
   converted_amount = []
   for currency in to_currency:
