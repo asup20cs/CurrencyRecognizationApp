@@ -29,7 +29,7 @@ Then run the gui.py in the main folder
 ## Roadmap
 
 - Web app using flask
-- Android app for mobile access
+- ~~Android app for mobile access~~
 - ~~Adding the training code~~
 - ~~Docker image~~ unable to add camera features in container
 
