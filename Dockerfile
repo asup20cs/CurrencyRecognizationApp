@@ -1,5 +1,5 @@
-# Base image with Python 3.8 (adjust if needed)
-FROM python:3.12
+# Base image with Python 3.12 (adjust if needed)
+FROM python:slim-bookworm
 
 # Create a working directory within the container
 WORKDIR /app
