@@ -30,8 +30,8 @@ Then run the gui.py in the main folder
 
 - Web app using flask
 - Android app for mobile access
-- Adding the training code
-- Docker image
+- ~~Adding the training code~~
+- ~~Docker image~~ unable to add camera features in container
 
 ## Dataset Used
 - [@Indian Currency Note images dataset 2020](https://www.kaggle.com/datasets/vishalmane109/indian-currency-note-images-dataset-2020)
