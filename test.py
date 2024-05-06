@@ -49,6 +49,6 @@ def predict_indian(image_path):
     predicted_currency = labels[predicted_class_index]
     print(f"Predicted Currency: {predicted_currency}")
     return predicted_currency
-for i in range(len(image_paths):
+for i in range(len(image_paths)):
     print(image_paths[i])
     predict_indian(image_paths[i])
