@@ -37,7 +37,7 @@ Then run the gui.py in the main folder
 - [@IndianCurrencyDataset](https://www.kaggle.com/datasets/uashutoshk/indian-currrency-dataset)
 - [@NepaliCurrencyDataset](https://www.kaggle.com/datasets/uashutoshk/nepali-currency-dataset)
 
-## Authors
+## Contributors
 - [@Ashutosh Khanal Upadhyay](https://github.com/asup20cs)
 - [@Omprakash Rana](https://github.com/Omprakash7171)
 - [@Nitesh Shah](https://github.com/NiteshShah1999)
