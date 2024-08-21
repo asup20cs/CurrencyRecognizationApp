@@ -4,4 +4,7 @@
 *.bmp
 *.pyc
 *.xlsx
+*.exe
+build/
+dist/
 
